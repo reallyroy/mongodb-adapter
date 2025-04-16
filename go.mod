@@ -1,4 +1,4 @@
-module github.com/royvargh/mongodb-adapter
+module github.com/reallyroy/mongodb-adapter
 
 go 1.21.6
 
