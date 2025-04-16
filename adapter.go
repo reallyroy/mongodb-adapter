@@ -26,7 +26,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/x/bsonx"
 )
 
 // CasbinRule represents a rule in Casbin.
@@ -157,7 +156,7 @@ func (a *adapter) prep() {
 	ctx := context.TODO()
 
 	for _, k := range indexes {
-		iModel := mongo.IndexModel{Keys: bsonx.Doc{{k, bsonx.Int32(1)}}}
+		iModel := mongo.IndexModel{Keys: bson.D{{Key: k, Value: 1}}}
 		if _, err := iview.CreateOne(ctx, iModel); err != nil {
 			panic(err)
 		}
